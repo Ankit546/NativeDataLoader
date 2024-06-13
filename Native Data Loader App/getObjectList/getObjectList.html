@@ -1,0 +1,17 @@
+<template>
+    <!-- <lightning-card title="ApexImperativeMethod" icon-name="custom:custom63"> -->
+        <lightning-combobox
+        name="objectSelector"
+        label="Select Object"
+        value={selectedObject}
+        placeholder="Select an Object"
+        options={objectOptions}
+        onchange={handleObjectChange}
+        >
+    </lightning-combobox>
+
+    <template if:true={selectedObject}>
+        <p>Selected Object: {selectedObject}</p>
+    </template>
+    <!-- </lightning-card> -->
+</template>

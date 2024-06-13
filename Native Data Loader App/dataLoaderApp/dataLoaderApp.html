@@ -1,0 +1,40 @@
+<template>
+        <lightning-card class="slds-p-around_x-medium" title="Follow the Steps below to Load the Data" icon-name="standard:datashares">
+            <div class="slds-m-top_small slds-p-around_x-medium" style="padding: 20px">
+
+            <c-get-object-list onobjectselection={handleObjectSelectionFromChild}></c-get-object-list>
+            
+            <lightning-combobox
+                name="selectOperation"
+                label="Select Operation"
+                value={selectedOperation}
+                placeholder="Select an Operation"
+                options={operationOptions}
+                onchange={handleOperationChange}>
+            </lightning-combobox>
+
+            <lightning-file-upload
+                label="Attach CSV File"
+                name="fileUploader"
+                accept={acceptedFormats}
+                record-id={myRecordId}
+                onuploadfinished={handleUploadFinished}
+                multiple>
+            </lightning-file-upload>
+            <br/>
+            <lightning-button variant="brand" label="Process File" onclick={handleClickAfterFileUpload} class="slds-m-left_x-small"></lightning-button>
+            
+            <br/>
+            <template if:true={dataReceived}>
+                File Parsed successfully!
+            </template>
+                <br/>
+                <h2 class="slds-m-left_x-small">Click Below to start the Native Data Load:</h2>
+            
+                <lightning-button variant="brand" label="Let's Go!" onclick={handleFinalSubmit} class="slds-m-left_x-small"></lightning-button>
+   
+    </div>
+        </lightning-card>
+ 
+
+</template>
